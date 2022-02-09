@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Driver : MonoBehaviour
 {
-    [SerializeField] float fltSteerSpeed = 0.8f;
-    [SerializeField] float fltMoveSpeed = 0.01f;
+    [SerializeField] float fltSteerSpeed = 220f;
+    [SerializeField] float fltMoveSpeed = 13f;
     
     void Start()
     {
@@ -14,8 +14,8 @@ public class Driver : MonoBehaviour
 
     void Update()
     {
-        float fltSteerAmount = Input.GetAxis("Horizontal") * fltSteerSpeed;
-        float fltMoveAmount = Input.GetAxis("Vertical") * fltMoveSpeed;
+        float fltSteerAmount = Input.GetAxis("Horizontal") * fltSteerSpeed * Time.deltaTime;
+        float fltMoveAmount = Input.GetAxis("Vertical") * fltMoveSpeed * Time.deltaTime;
         transform.Rotate(0, 0, -fltSteerAmount);
         transform.Translate(0, fltMoveAmount, 0);
     }
