@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Driver : MonoBehaviour
 {
+    float fltSteerSpeed = 1f;
+    float fltMoveSpeed = 0.01f;
     void Start()
     {
         
@@ -11,7 +13,7 @@ public class Driver : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, 0, 0.3f);
-        transform.Translate(0, 0.07f, 0);
+        transform.Rotate(0, 0, fltSteerSpeed);
+        transform.Translate(0, fltMoveSpeed, 0);
     }
 }
