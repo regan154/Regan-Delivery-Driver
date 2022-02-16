@@ -6,11 +6,8 @@ public class Driver : MonoBehaviour
 {
     [SerializeField] float fltSteerSpeed = 220f;
     [SerializeField] float fltMoveSpeed = 13f;
-    
-    void Start()
-    {
-        
-    }
+    [SerializeField] float fltSlowSpeed = 10f;
+    [SerializeField] float fltBoostSpeed = 30f;
 
     void Update()
     {
@@ -18,5 +15,18 @@ public class Driver : MonoBehaviour
         float fltMoveAmount = Input.GetAxis("Vertical") * fltMoveSpeed * Time.deltaTime;
         transform.Rotate(0, 0, -fltSteerAmount);
         transform.Translate(0, fltMoveAmount, 0);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        fltMoveSpeed = fltSlowSpeed;
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Boost")
+        {
+            fltMoveSpeed = fltBoostSpeed;
+        }
+
     }
 }
