@@ -26,6 +26,7 @@ public class Driver : MonoBehaviour
         if (other.tag == "Boost")
         {
             fltMoveSpeed = fltBoostSpeed;
+            Debug.Log("I AM SPEED");
         }
 
     }
